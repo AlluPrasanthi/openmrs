@@ -12,19 +12,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+
+import com.openmrs.pages.LoginPage;
+import com.openmrs.pages.LogoutPage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestBase {
-	
+
 	public static WebDriver driver;
 	public static Properties prop;
-		
-	public TestBase(){
+
+	public TestBase() {
 		try {
 			prop = new Properties();
-			FileInputStream ip = new FileInputStream(System.getProperty("user.dir")+ "/src/main/java/com/openmrs"
-					+ "/util/config.properties");
+			FileInputStream ip = new FileInputStream(
+					System.getProperty("user.dir") + "/src/main/java/com/openmrs" + "/util/config.properties");
 			prop.load(ip);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -32,37 +36,26 @@ public class TestBase {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	public static void initialization(){
+
+	public static void initialization() {
+
 		String browserName = prop.getProperty("browser");
-		
-		if(browserName.equals("chrome")){
-			//System.setProperty("webdriver.chrome.driver", "/Users/naveenkhunteta/Downloads/chromedriver");
+
+		if (browserName.equals("chrome")) {
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver(); 
-		}
-		else if(browserName.equals("FF")){
-			//System.setProperty("webdriver.gecko.driver", "/Users/naveenkhunteta/Documents/SeleniumServer/geckodriver");
+			driver = new ChromeDriver();
+		} else if (browserName.equals("FF")) {
 			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver(); 
+			driver = new FirefoxDriver();
 		}
-		
+
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-		
+
 		driver.get(prop.getProperty("url"));
-		
+
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

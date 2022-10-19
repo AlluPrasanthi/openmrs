@@ -5,8 +5,8 @@
     <classes>
       <class name="com.openmrs.testcase.LoginTest">
         <methods>
-          <include name="loginPageTitleTest"/>
           <include name="tearDown"/>
+          <include name="loginTest"/>
           <include name="setUp"/>
         </methods>
       </class> <!-- com.openmrs.testcase.LoginTest -->

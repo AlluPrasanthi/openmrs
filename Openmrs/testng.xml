@@ -3,7 +3,10 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="com.openmrs.libs.BaseClass"/>
+      <class name="com.openmrs.testcase.LoginTest"/>
+      <!-- <class name="com.openmrs.testcase.HomePageTest"/>
+      <class name="com.openmrs.testcase.LogoutTest"/>-->
+      <class name="com.openmrs.testcase.FindPatientTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
